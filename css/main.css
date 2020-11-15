@@ -11,13 +11,17 @@
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
   background-color: var(--vit);
   display: grid;
-  grid-template-rows: 1fr auto 1fr;
+  grid-template: auto auto auto auto / 1fr 50% 1fr;
+}
+
+body.index {
+  grid-template: 15vh auto 60vh 15vh / 1fr 50% 1fr;
 }
 
 h1,
@@ -27,11 +31,11 @@ h2 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 p {
@@ -41,21 +45,39 @@ p {
   color: var(--svart);
 }
 
-header * {
+header a * {
   display: inline-block;
+}
+
+header {
+  grid-column: 1 / 4;
+}
+
+header h1 {
+  text-decoration: none;
 }
 
 nav {
   background-color: var(--gråblå);
+  width: 100%;
+  grid-column: 1 / 4;
 }
 
-nav p {
+nav > div {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 1fr 1fr auto;
+}
+
+.nav-button {
   color: var(--svart);
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-family: "Roboto", sans-serif;
-  padding: 2em;
+  padding: 0.8em 0;
+  margin: 0;
   background-color: var(--gråblå);
+  text-align: center;
+  grid-column-start: 2;
 }
 
 nav p:hover {
@@ -66,7 +88,7 @@ nav p:hover {
   display: none;
   position: absolute;
   background-color: var(--vit);
-  width: auto;
+  width: 100%;
 }
 
 [class|="dropdown-content"] * {
@@ -97,8 +119,20 @@ nav p:hover {
   display: block;
 }
 
-.highlighted {
-  background-color: var(--turkos);
+.dropdown-om {
+  grid-column: 2 / 3;
+}
+
+main {
+  grid-column: 1 / 4;
+}
+
+.suggestions {
+  background-image: url("../images/samling.jpg");
+  height: auto;
+}
+
+.suggestions a {
   padding: 1.5em;
   color: var(--svart);
   text-decoration: none;
@@ -107,12 +141,19 @@ nav p:hover {
   font-weight: bold;
 }
 
-main {
-  background-image: url("/images/samling.jpg");
+.highlighted {
+  background-color: var(--turkos);
 }
 
 footer {
   background-color: var(--grå);
   text-align: center;
   line-height: 1.75em;
+  padding: 10px 0;
+  grid-column: 1 / 4;
+}
+
+address {
+  font-size: 1rem;
+  font-family: "Source Serif Pro", serif;
 }
