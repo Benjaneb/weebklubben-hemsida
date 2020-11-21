@@ -7,7 +7,8 @@
   --svart: #141115;
   --grå: #cccccc;
   --gråblå: #618194;
-  --turkos: #08d5d9;
+  --turkos: #09e4e7;
+  --mörk-turkos: #07c2c5;
 }
 
 body {
@@ -18,6 +19,10 @@ body {
   background-color: var(--vit);
   display: grid;
   grid-template: 10vh 5vh auto min-content / 1fr 50% 1fr;
+}
+
+body.index {
+  grid-template: 10vh 5vh 85vh min-content / 1fr 50% 1fr;
 }
 
 ::-webkit-scrollbar {
@@ -32,15 +37,11 @@ body {
   background-color: #a5a5a5;
   border: 3px solid #d8d8d8;
   border-radius: 7px;
-  box-shadow: inset ;
+  box-shadow: inset;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #949494;
-}
-
-body.index {
-  grid-template: 10vh 5vh 85vh min-content / 1fr 50% 1fr;
 }
 
 h1,
@@ -59,40 +60,52 @@ h2 {
 
 p {
   font-size: 1rem;
-  line-height: 1.5em;
+  line-height: 1.5;
   font-family: "Source Serif Pro", serif;
   color: var(--svart);
+  max-width: 55ch;
+  text-align: justify;
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
   grid-column-start: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
 }
 
 header a {
-  text-decoration: none;
   display: flex;
-  align-items: flex-end;
-  flex-direction: row;
-  height: 100%;
-  width: min-content;
+  align-items: center;
 }
 
-header h1 {
-  margin: 10px;
+header h1,
+header span {
+  margin: 0 0 0 10px;
 }
 
-.weebkatt {
+header span {
+  font-family: "Roboto", sans-serif;
+  color: var(--svart);
+  font-weight: bold;
+}
+
+[class|="weebkatt"] {
+  max-height: 10vh;
+}
+
+.weebkatt-gif {
   position: absolute;
   display: none;
 }
 
-header:first-child:hover .weebkatt {
+header > :first-child:hover .weebkatt-gif {
   display: block;
-}
-
-header:first-child img {
-  max-height: 10vh;
-  max-width: 90px;
 }
 
 nav {
@@ -112,57 +125,71 @@ nav > div {
 
 .nav-button {
   color: var(--svart);
-  text-decoration: none;
   font-size: 1.5rem;
   font-family: "Roboto", sans-serif;
   background-color: var(--gråblå);
   text-align: center;
-  padding: 0 auto;
+  height: 100%;
   transition: background-color 0.3s;
 }
 
 .nav-button:hover {
   background-color: hsl(202, 21%, 45%);
-  transition: background-color 0.3s;
+  transition: background-color 0.25s;
 }
 
 [class|="dropdown-content"] {
   display: none;
   position: absolute;
   background-color: var(--vit);
-  width: inherit;
 }
 
 [class|="dropdown-content"] * {
   display: block;
   color: var(--svart);
-  text-decoration: none;
   font-family: "Roboto", sans-serif;
+  text-align: center;
   padding: 1.5em;
+  border: #727272 solid 1px;
+  transition: background-color 0.25s;
 }
 
 [class|="dropdown-content"] *:hover {
   background-color: hsl(0, 0%, 95%);
+  transition: background-color 0.25s;
 }
 
-.dropdown-om:hover .dropdown-content-om {
+.dropdown-om:hover .dropdown-content-om,
+.dropdown-om:focus-within .dropdown-content-om {
   display: block;
 }
 
-.dropdown-med:hover .dropdown-content-med {
+.dropdown-med:hover .dropdown-content-med,
+.dropdown-med:focus-within .dropdown-content-med {
   display: block;
 }
 
-.dropdown-sve:hover .dropdown-content-sve {
+.dropdown-sve:hover .dropdown-content-sve,
+.dropdown-sve:focus-within .dropdown-content-sve {
   display: block;
 }
 
-.dropdown-kon:hover .dropdown-content-kon {
+.dropdown-kon:hover .dropdown-content-kon,
+.dropdown-kon:focus-within .dropdown-content-kon {
   display: block;
+}
+
+.index main {
+  grid-column: 1 / 4;
+  padding: 0;
 }
 
 main {
-  grid-column: 1 / 4;
+  grid-column: 2 / 3;
+}
+
+main h1 {
+  border-bottom: solid var(--grå) 2px;
 }
 
 .suggestions {
@@ -183,53 +210,133 @@ main {
 }
 
 .suggestions p {
-  font-size: 1.3rem;
-  text-shadow: #ffffff 0 0 10px;
+  font-size: 2.5vh;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 0 0.5em 0.5em;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  min-width: 17ch;
+  text-align: center;
 }
 
 .suggestions a {
   padding: 1.5em;
+  border-radius: 0.2em;
   color: var(--svart);
-  text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 3vh;
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  box-shadow: #3b3b3b 4px 4px 10px;
-  transition: font-size 0.3s;
+  box-shadow: #3b3b3b 0.2em 0.2em 0.5em;
 }
 
 .suggestions a:hover {
-  font-size: 1.65rem;
-  transition: font-size 0.3s;
+  font-size: 3.4vh;
 }
 
-.highlighted {
+.highlighted-box {
   background-color: var(--turkos);
-  transition: background-color 1.3s;
+  transition: background-color 0.25s, font-size 0.25s;
 }
 
-.highlighted:hover {
-  background-color: hsl(181, 93%, 40%);
-  transition: background-color 1.3s;
+.highlighted-box:hover {
+  background-color: var(--mörk-turkos);
+  transition: background-color 0.25s, font-size 0.25s;
 }
 
 .caption {
   align-self: flex-end;
-  margin: auto 5px 5px 5px;
-  bottom: 0;
-  right: 0;
+  margin: auto 0.25em 0.5em 0.25em;
+}
+
+.highlighted-text {
+  color: var(--mörk-turkos);
+  font-weight: bold;
+}
+
+a.highlighted-text:hover {
+  color: hsl(181, 93%, 35%);
+  text-decoration: underline;
+}
+
+.google-maps {
+  width: 100%;
+}
+
+.discord-widget {
+  width: 100%;
+}
+
+.introduktion main > div {
+  display: flex;
+}
+
+section {
+  margin: 0 2em 2em 0;
+}
+
+section:last-child {
+  margin: 0;
+}
+
+main img {
+  max-width: 50ch;
 }
 
 footer {
   background-color: var(--grå);
   text-align: center;
   line-height: 1.75em;
-  padding: 10px 0;
+  padding: 1em 0;
+  margin-top: 2em;
   grid-column: 1 / 4;
-  border-top: black solid 2px;
+  box-shadow: black 0 -5px 20px;
+}
+
+.index footer {
+  margin: 0;
 }
 
 address {
   font-size: 1rem;
   font-family: "Source Serif Pro", serif;
+}
+
+address a {
+  text-decoration: underline;
+  color: var(--mörk-turkos);
+}
+
+address a:hover {
+  color: hsl(181, 93%, 35%);
+}
+
+@media (max-width: 900px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .nav-button {
+    font-size: 1rem;
+  }
+
+  header,
+  nav > div {
+    grid-column: 1 / 4;
+  }
+
+  [class|="dropdown-content"] * {
+    padding: 0.5em;
+    font-size: 0.8rem;
+  }
+
+  header > a:last-child {
+    display: none;
+  }
+
+  main {
+    grid-column: 1 / 4;
+    padding: 0 1.5em;
+  }
+
+  .introduktion main > div {
+    flex-wrap: wrap;
+  }
 }
