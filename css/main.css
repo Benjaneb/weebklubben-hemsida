@@ -5,7 +5,11 @@
   font-size: 18px;
   --vit: #fdffff;
   --svart: #141115;
-  --grå: #cccccc;
+  --grå: linear-gradient(
+    160deg,
+    rgba(204, 204, 204, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   --gråblå: #618194;
   --turkos: #09e4e7;
   --mörk-turkos: #07c2c5;
@@ -18,11 +22,11 @@ body {
   padding: 0;
   background-color: var(--vit);
   display: grid;
-  grid-template: 10vh 5vh auto min-content / 1fr 50% 1fr;
+  grid-template: 10vh 5vh auto min-content / 1fr 50vw 1fr;
 }
 
 body.index {
-  grid-template: 10vh 5vh 85vh min-content / 1fr 50% 1fr;
+  grid-template: 10vh 5vh 85vh min-content / 1fr 50vw 1fr;
 }
 
 ::-webkit-scrollbar {
@@ -63,12 +67,18 @@ p {
   line-height: 1.5;
   font-family: "Source Serif Pro", serif;
   color: var(--svart);
-  max-width: 55ch;
+  max-width: 65ch;
   text-align: justify;
 }
 
 a {
   text-decoration: none;
+}
+
+li {
+  margin-bottom: 1em;
+  font-family: "Source Serif Pro", serif;
+  color: var(--svart);
 }
 
 header {
@@ -142,6 +152,7 @@ nav > div {
   display: none;
   position: absolute;
   background-color: var(--vit);
+  width: 12.5vw;
 }
 
 [class|="dropdown-content"] * {
@@ -149,7 +160,7 @@ nav > div {
   color: var(--svart);
   font-family: "Roboto", sans-serif;
   text-align: center;
-  padding: 1.5em;
+  padding: 1.5rem 0;
   border: #727272 solid 1px;
   transition: background-color 0.25s;
 }
@@ -189,7 +200,19 @@ main {
 }
 
 main h1 {
-  border-bottom: solid var(--grå) 2px;
+  border-bottom: solid #cccccc 2px;
+}
+
+main a,
+footer a {
+  color: var(--mörk-turkos);
+  font-weight: bold;
+}
+
+main a:hover,
+footer a:hover {
+  color: hsl(181, 93%, 35%);
+  text-decoration: underline;
 }
 
 .suggestions {
@@ -230,6 +253,8 @@ main h1 {
 
 .suggestions a:hover {
   font-size: 3.4vh;
+  text-decoration: none;
+  color: var(--svart);
 }
 
 .highlighted-box {
@@ -245,16 +270,6 @@ main h1 {
 .caption {
   align-self: flex-end;
   margin: auto 0.25em 0.5em 0.25em;
-}
-
-.highlighted-text {
-  color: var(--mörk-turkos);
-  font-weight: bold;
-}
-
-a.highlighted-text:hover {
-  color: hsl(181, 93%, 35%);
-  text-decoration: underline;
 }
 
 .google-maps {
@@ -279,10 +294,128 @@ section:last-child {
 
 main img {
   max-width: 50ch;
+  max-height: 17em;
+  border-radius: 1em;
+}
+
+#mötesbild {
+  width: 100%;
+}
+
+.first {
+  margin-right: 1em;
+}
+
+.last {
+  margin-left: 1em;
+}
+
+.weebklubben-sverok section,
+.om-sverok section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.citation {
+  font-style: italic;
+  color: #949494;
+  text-indent: 2em;
+}
+
+.timeline div {
+  border-right: solid 2px grey;
+  padding: 1.5em;
+  box-sizing: border-box;
+  max-width: 30em;
+  margin: 0 auto;
+}
+
+.timeline div:first-child,
+.timeline div:last-child {
+  border-right: dashed 2px grey;
+}
+
+.timeline p {
+  border: solid 1px grey;
+  border-radius: 0.3em;
+  padding: 1em;
+  background: var(--grå);
+  box-shadow: grey 0.2em 0.2em 0.1em;
+  font-family: "Roboto", sans-serif;
+  max-width: 20em;
+}
+
+.topplista {
+  background: var(--grå);
+  border: var(--svart) solid 2px;
+  border-radius: 0.8em;
+  max-width: 16em;
+  padding: 0.3em;
+  margin: 7em auto;
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+  height: min-content;
+}
+
+.topplista h2 {
+  text-align: center;
+}
+
+.topplista li {
+  margin: 0.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+.topplista li::marker {
+  font-weight: bold;
+}
+
+.medlemskort {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.medlemskort div {
+  background: var(--grå);
+  border: black 1px solid;
+  border-radius: 0.8em;
+  margin: 0 2em 2em 0;
+  box-shadow: gray 0.2em 0.2em 0.2em;
+  width: 10.5em;
+  height: min-content;
+  transition: font-size 0.3s, margin 0.3s;
+}
+
+.medlemskort div:hover {
+  font-size: 1.1em;
+  margin: -0.5em 1.5em 1em -0.5em;
+  transition: font-size 0.3s, margin 0.3s;
+}
+
+.medlemskort img {
+  margin: 0.5em;
+  border-radius: 0.6em;
+  width: 9.5em;
+}
+
+.medlemskort p {
+  text-align: center;
+  margin: 0.5em auto;
+  width: 10em;
+  font-size: 1em;
+  font-family: "Roboto", sans-serif;
+}
+
+div.ordförande {
+  background: none;
+  background-color: var(--gråblå);
 }
 
 footer {
-  background-color: var(--grå);
+  background: var(--grå);
   text-align: center;
   line-height: 1.75em;
   padding: 1em 0;
@@ -309,6 +442,35 @@ address a:hover {
   color: hsl(181, 93%, 35%);
 }
 
+@media (max-width: 1200px) {
+  .weebklubben-sverok section,
+  .om-sverok section {
+    flex-wrap: wrap;
+  }
+
+  .topplista {
+    grid-column: 1 / 4;
+    margin: 2em auto;
+  }
+
+  header,
+  nav > div {
+    grid-column: 1 / 4;
+  }
+
+  [class|="dropdown-content"] {
+    width: 25vw;
+  }
+
+  .introduktion main > div {
+    flex-wrap: wrap;
+  }
+
+  section {
+    margin: 0;
+  }
+}
+
 @media (max-width: 900px) {
   h1 {
     font-size: 2rem;
@@ -317,26 +479,18 @@ address a:hover {
     font-size: 1rem;
   }
 
-  header,
-  nav > div {
-    grid-column: 1 / 4;
-  }
-
   [class|="dropdown-content"] * {
-    padding: 0.5em;
     font-size: 0.8rem;
-  }
-
-  header > a:last-child {
-    display: none;
   }
 
   main {
     grid-column: 1 / 4;
     padding: 0 1.5em;
   }
+}
 
-  .introduktion main > div {
-    flex-wrap: wrap;
+@media (max-width: 500px) {
+  #discord-länk {
+    display: none;
   }
 }
