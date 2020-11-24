@@ -336,6 +336,10 @@ main img {
   border-right: dashed 2px grey;
 }
 
+.timeline span {
+  font-weight: bold;
+}
+
 .timeline p {
   border: solid 1px grey;
   border-radius: 0.3em;
@@ -430,7 +434,7 @@ footer {
 
 address {
   font-size: 1rem;
-  font-family: "Source Serif Pro", serif;
+  font-family: "Roboto", sans-serif;
 }
 
 address a {
