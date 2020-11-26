@@ -22,11 +22,11 @@ body {
   padding: 0;
   background-color: var(--vit);
   display: grid;
-  grid-template: 10vh 5vh auto min-content / 1fr 50vw 1fr;
+  grid-template: 10vh 5vh auto min-content / 1fr 60vw 1fr;
 }
 
 body.index {
-  grid-template: 10vh 5vh 85vh min-content / 1fr 50vw 1fr;
+  grid-template: 10vh 5vh 85vh min-content / 1fr 60vw 1fr;
 }
 
 ::-webkit-scrollbar {
@@ -122,7 +122,7 @@ nav {
   background-color: var(--gråblå);
   grid-column: 1 / 4;
   display: grid;
-  grid-template-columns: 1fr 50vw 1fr;
+  grid-template-columns: 1fr 60vw 1fr;
   border-top: #5f5f5f solid 2px;
   border-bottom: #5f5f5f solid 2px;
 }
@@ -152,7 +152,7 @@ nav > div {
   display: none;
   position: absolute;
   background-color: var(--vit);
-  width: 12.5vw;
+  width: 15vw;
 }
 
 [class|="dropdown-content"] * {
@@ -327,7 +327,7 @@ main img {
   border-right: solid 2px grey;
   padding: 1.5em;
   box-sizing: border-box;
-  max-width: 30em;
+  max-width: 34em;
   margin: 0 auto;
 }
 
@@ -347,7 +347,7 @@ main img {
   background: var(--grå);
   box-shadow: grey 0.2em 0.2em 0.1em;
   font-family: "Roboto", sans-serif;
-  max-width: 20em;
+  max-width: max-content;
 }
 
 .topplista {
@@ -355,7 +355,7 @@ main img {
   border: var(--svart) solid 2px;
   border-radius: 0.8em;
   max-width: 16em;
-  padding: 0.3em;
+  padding: 0.4em 1em;
   margin: 7em auto;
   grid-column: 3 / 4;
   grid-row: 3 / 4;
@@ -364,10 +364,11 @@ main img {
 
 .topplista h2 {
   text-align: center;
+  font-size: 1.6rem;
 }
 
 .topplista li {
-  margin: 0.5em;
+  margin: 1em 0;
   font-family: "Roboto", sans-serif;
 }
 
@@ -479,6 +480,7 @@ address a:hover {
   h1 {
     font-size: 2rem;
   }
+
   .nav-button {
     font-size: 1rem;
   }
@@ -496,5 +498,13 @@ address a:hover {
 @media (max-width: 500px) {
   #discord-länk {
     display: none;
+  }
+
+  .nav-button {
+    font-size: 0.8rem;
+  }
+
+  [class|="dropdown-content"] * {
+    font-size: 0.7rem;
   }
 }
